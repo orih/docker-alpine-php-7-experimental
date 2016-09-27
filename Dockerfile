@@ -1,15 +1,13 @@
-FROM alpine:3.3
+FROM alpine:3.4
 
-MAINTAINER Orih
+MAINTAINER toricls
 
-RUN echo "@testing http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-    apk update && \
-    apk --no-cache add apache2 php7-apache2@testing \
-    php7@testing php7-gd@testing php7-xml@testing php7-xsl@testing php7-pdo_mysql@testing \
-    php7-mbstring@testing php7-mcrypt@testing php7-curl@testing php7-json@testing php7-fpm@testing \
-    php7-phar@testing php7-openssl@testing php7-xml \
-    php7-mysqlnd@testing php7-ctype@testing php7-zlib@testing php7-zip@testing && \
-    rm -fr /var/cache/apk/* && \
+RUN echo "@community http://nl.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
+    apk --no-cache add apache2 php7-apache2@community \
+    php7@community php7-gd@community php7-xml@community php7-xsl@community php7-pdo_mysql@community \
+    php7-mbstring@community php7-mcrypt@community php7-curl@community php7-json@community php7-fpm@community \
+    php7-phar@community php7-openssl@community php7-xml \
+    php7-mysqlnd@community php7-ctype@community php7-zlib@community php7-zip@community && \
     ln -s /usr/bin/php7 /usr/bin/php && \
     mkdir -p /run/apache2
 
